@@ -73,6 +73,8 @@ public class RCTMGLOfflineModule extends ReactContextBaseJavaModule {
         final String name = ConvertUtils.getString("name", options, "");
         final OfflineManager offlineManager = OfflineManager.getInstance(mReactContext);
         LatLngBounds latLngBounds = getBoundsFromOptions(options);
+        //This line was added to change the tiles count limit
+        offlineManager.setOfflineMapboxTileCountLimit(24000);
 
         OfflineRegionDefinition definition = makeDefinition(latLngBounds, options);
         byte[] metadataBytes = getMetadataBytes(ConvertUtils.getString("metadata", options, ""));
